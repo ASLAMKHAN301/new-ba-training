@@ -296,6 +296,20 @@ const Hero = () => {
     { n: "55%", l: "Average Hike Offered" },
     { n: "185+", l: "Companies Hired So Far" },
   ];
+  const features = [
+    "Live sessions + lifetime LMS access",
+    "2 real-world project implementations",
+    "Industry certification prep included",
+    "100% placement assistance",
+    "Merit-based scholarships available",
+  ];
+  const overviewPoints = [
+    { bold: "20 weeks", text: " of intensive, practitioner-led training" },
+    { bold: "Batch size of 5", text: " — mentorship, not a lecture hall" },
+    { bold: "Evenings & weekends", text: " — for working professionals" },
+    { bold: "CEH, Security+, SOC Analyst", text: " certification alignment" },
+    { bold: null, text: "Live labs on real infrastructure — not sandboxes" },
+  ];
   return (
     <section className="relative overflow-hidden" style={{ background: C.navy ,
       backgroundImage: `
@@ -363,8 +377,66 @@ const Hero = () => {
         </div>
 
         {/* RIGHT form — desktop only */}
-        <div className="hidden lg:block my-10 relative z-10">
-          <HeroForm />
+        <div className="hidden lg:flex flex-col gap-5 my-10 xl:my-12 relative z-10">
+          {/* Price block */}
+          <div className="relative overflow-hidden rounded p-7" style={{ background: C.gold }}>
+            <div className="absolute inset-0 pointer-events-none" style={{
+              backgroundImage: "linear-gradient(rgba(0,0,0,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,0.07) 1px,transparent 1px)",
+              backgroundSize: "24px 24px",
+            }} />
+            <div className="relative z-10">
+              <div className="text-[10px] font-bold tracking-[2.5px] uppercase mb-2" style={{ color: "rgba(0,0,0,0.5)" }}>Programme Fee</div>
+              <div className="text-lg font-semibold mb-1 line-through" style={{ color: "rgba(0,0,0,0.35)" }}>₹1,20,000</div>
+              <div className="flex items-end gap-2 mb-1">
+                <span className="font-bold leading-none tracking-[-1.5px]"
+                  style={{ fontFamily: "'Playfair Display',Georgia,serif", fontSize: 44, color: C.navy }}>₹89,999</span>
+                <span className="text-[13px] font-medium mb-1.5" style={{ color: "rgba(0,0,0,0.5)" }}>/ full programme</span>
+              </div>
+              <div className="text-[13px] font-medium mb-4" style={{ color: "rgba(0,0,0,0.6)" }}>
+                Starting at <strong style={{ color: C.navy }}>₹7,500/month</strong> — zero-cost EMI
+              </div>
+              <div className="flex flex-col gap-2 pt-4" style={{ borderTop: "1px solid rgba(0,0,0,0.12)" }}>
+                {features.map((f) => (
+                  <div key={f} className="flex items-center gap-2.5 text-[13px] font-medium" style={{ color: "rgba(0,0,0,0.7)" }}>
+                    <span className="inline-flex flex-shrink-0 items-center justify-center w-4 h-4 rounded-full border"
+                      style={{ background: "rgba(0,0,0,0.12)", borderColor: "rgba(0,0,0,0.2)" }}>
+                      <svg viewBox="0 0 10 10" width="10" height="10" fill="none">
+                        <polyline points="2,5 4.5,7.5 8,2.5" stroke="#000" strokeWidth="1.5" opacity="0.6" />
+                      </svg>
+                    </span>
+                    {f}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Overview block */}
+          <div className="bg-white rounded p-7" style={{ boxShadow: "0 24px 64px rgba(0,0,0,0.25)" }}>
+            <div className="font-bold text-[17px] tracking-[-0.3px] mb-1"
+              style={{ fontFamily: "'Playfair Display',Georgia,serif", color: C.navy }}>Programme at a Glance</div>
+            <div className="text-[12px] mb-4" style={{ color: C.stone }}>
+              Everything you need to launch a cybersecurity career — in one structured programme.
+            </div>
+            <div className="flex flex-col gap-2.5">
+              {overviewPoints.map((p, i) => (
+                <div key={i} className="flex items-start gap-3 text-[13px] leading-[1.55] font-light" style={{ color: C.stone }}>
+                  <GoldCheck />
+                  <span>
+                    {p.bold && <strong style={{ color: C.navy, fontWeight: 600 }}>{p.bold}</strong>}
+                    {p.text}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <a href="#enrol"
+              className="block w-full text-center text-[14px] font-semibold text-white no-underline py-3.5 rounded-sm mt-4 transition-colors duration-150"
+              style={{ background: C.navy }}
+              onMouseEnter={(e) => (e.currentTarget.style.background = C.navyMid)}
+              onMouseLeave={(e) => (e.currentTarget.style.background = C.navy)}>
+              Book a Free Counselling Call →
+            </a>
+          </div>
         </div>
       </div>
 
